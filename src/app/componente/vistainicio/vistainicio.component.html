@@ -1,0 +1,13 @@
+<div class="container">
+<div class="row ">
+<div class="card" style="width: 18rem;" *ngFor="let n of noticias">
+    <div class="card-body">
+      <h5 class="card-title">{{n.titulo}}</h5>
+      <h6 class="card-subtitle mb-2 text-muted"> fecha: {{n.fecha | date:'dd-mm-yyyy'}}</h6>
+      <p class="card-text">{{n.cuerpo}}</p>
+      <a href="#" class="card-link">Ver</a>
+    
+    </div>
+  </div>
+</div>
+</div>
