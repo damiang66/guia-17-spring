@@ -7,11 +7,15 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './componente/navbar/navbar.component';
 import { VistainicioComponent } from './componente/vistainicio/vistainicio.component';
 import { HttpClientModule } from '@angular/common/http';
+import { VerUnaNoticiaComponent } from './componente/ver-una-noticia/ver-una-noticia.component';
+import { ListarComponent } from './compontente/listar/listar.component';
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    VistainicioComponent
+    VistainicioComponent,
+    VerUnaNoticiaComponent,
+    ListarComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,46 @@
+<div class="card border-primary mb-3">
+    <div class="card-header">Noticias Egg</div>
+    <div class="card-body text-primary">
+      <h5 class="card-title">Listado de Noticias</h5>
+      <div class="my-2 text-left">
+      <button  class="btn btn-rounded btn-success" routerLink="/noticia/form">crear</button>
+    </div>
+    <div  *ngIf="noticias==null" class="alert alert-info">
+     No exiten registros en la base de datos
+    </div>
+      <table class="table table-bordered table-striped" *ngIf="noticias.length>0">
+        <thead>
+  
+          <tr>
+            <th>id</th>
+            <th>titulo</th>
+            <th>cuerpo</th>
+            <th>fecha</th>
+            
+            <th >editar</th>
+            <th >Eliminar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let noticia of noticias">
+            <td>
+             {{noticia.id}}
+  
+            </td>
+            <td>{{ noticia.titulo }}</td>
+            <td>{{  noticia.cuerpo | uppercase}}</td>
+           
+            <td>{{ noticia.fecha | date:'dd-MMMM-yyyy' }}</td>
+           
+            <td > <button [routerLink]="['/noticia/form',noticia.id]" class="btn btn-success btn-sm">Editar</button>
+  
+          
+            <td>
+              <button  class="btn btn-danger btn-sm " (click)="eliminar(noticia)">Eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+     
+    </div>
+  </div>

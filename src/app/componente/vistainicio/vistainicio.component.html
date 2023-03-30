@@ -1,13 +1,12 @@
-<div class="container">
+<div class="container ">
 <div class="row ">
-<div class="card" style="width: 18rem;" *ngFor="let n of noticias">
-    <div class="card-body">
-      <h5 class="card-title">{{n.titulo}}</h5>
-      <h6 class="card-subtitle mb-2 text-muted"> fecha: {{n.fecha | date:'dd-mm-yyyy'}}</h6>
-      <p class="card-text">{{n.cuerpo}}</p>
-      <a href="#" class="card-link">Ver</a>
-    
-    </div>
-  </div>
+    <div class="card text-white bg-primary m-2" style="max-width: 18rem;" *ngFor="let n of noticias">
+        <div class="card-header">fecha: {{n.fecha | date:'dd-mm-yy'}}</div>
+        <div class="card-body">
+          <h5 class="card-title">{{n.titulo}}</h5>
+          <p class="card-text">{{n.cuerpo}}</p>
+          <button [routerLink]="['/verNoticia/',n.id]" class="btn btn-success btn-sm ">ver</button>
+        </div>
+      </div>
 </div>
 </div>
