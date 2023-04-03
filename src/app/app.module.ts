@@ -9,13 +9,15 @@ import { VistainicioComponent } from './componente/vistainicio/vistainicio.compo
 import { HttpClientModule } from '@angular/common/http';
 import { VerUnaNoticiaComponent } from './componente/ver-una-noticia/ver-una-noticia.component';
 import { ListarComponent } from './compontente/listar/listar.component';
+import { NoticiaFormComponent } from './componente/noticia-form/noticia-form.component';
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     VistainicioComponent,
     VerUnaNoticiaComponent,
-    ListarComponent
+    ListarComponent,
+    NoticiaFormComponent
   ],
   imports: [
     BrowserModule,
