@@ -3,4 +3,5 @@ export class Noticia {
     titulo:string;
     cuerpo:string;
     fecha:string;
+    foto:string;
 }

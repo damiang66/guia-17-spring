@@ -1,3 +1,4 @@
+<app-foto *ngIf="noticiaSeleccionada" [noticia]="noticiaSeleccionada"></app-foto>
 <div class="card border-primary mb-3">
     <div class="card-header">Noticias Egg</div>
     <div class="card-body text-primary">
@@ -25,7 +26,11 @@
         <tbody>
           <tr *ngFor="let noticia of noticias">
             <td>
-             {{noticia.id}}
+              <img *ngIf="noticia.foto" (click)="abrirModel(noticia)"  src="http://localhost:8080/noticia/upload/img/{{noticia.foto}}" class="img-thumbnail rounded"
+              style="width:64px; cursor: pointer; ">
+              <img *ngIf="!noticia.foto" (click)="abrirModel(noticia)"  src="http://localhost:8080/img/no-user.png" class="img-thumbnail rounded"
+              style="width:64px; cursor: pointer; ">
+
 
             </td>
             <td>{{ noticia.titulo }}</td>

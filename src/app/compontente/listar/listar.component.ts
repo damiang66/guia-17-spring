@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Noticia } from 'src/app/modelo/noticia';
+import { ModalService } from 'src/app/serice/modal.service';
 import { NoticiaService } from 'src/app/service/noticia.service';
 import Swal from 'sweetalert2';
 
@@ -11,13 +12,11 @@ import Swal from 'sweetalert2';
 export class ListarComponent implements OnInit {
   termino:string;
 noticias:Noticia[]=[];
-constructor(public service:NoticiaService){}
+noticiaSeleccionada:Noticia = new Noticia();
+constructor(public service:NoticiaService,private modal:ModalService){}
   ngOnInit(): void {
-    this.service.listar().subscribe(data=>{
-      this.noticias= data as Noticia[];
-      console.log(data);
-
-    })
+    this.todos();
+    this.noticiaSeleccionada=new Noticia();
   }
   eliminar(noticia:Noticia){
     Swal.fire({
@@ -51,7 +50,17 @@ constructor(public service:NoticiaService){}
       console.log(data);
 
     })
-  }
+    this.modal.notificar.subscribe(noticia=>{
+      this.noticias.map(clienteOriginal=>{
+        if(noticia.id==clienteOriginal.id){
+    clienteOriginal.foto= noticia.foto;
+        }
+        return clienteOriginal;
+      })
+    })
+      }
+
+
   buscar(termino:string){
 
 this.service.buscarPorTitulo(termino).subscribe(data=>{
@@ -59,4 +68,9 @@ this.service.buscarPorTitulo(termino).subscribe(data=>{
 })
   }
 
+
+    abrirModel(noticia:Noticia){
+  this.noticiaSeleccionada=noticia;
+  this.modal.abrirModal();
+    }
 }

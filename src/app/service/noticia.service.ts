@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, Observable, throwError } from 'rxjs'
+import { catchError, map, Observable, throwError } from 'rxjs'
 import { Noticia } from '../modelo/noticia';
 import Swal from 'sweetalert2';
 @Injectable({
@@ -41,5 +41,19 @@ public eliminar(id:number):Observable<any>{
 public buscarPorTitulo(termino:string):Observable<Noticia[]>{
   return this.http.get<Noticia[]>(`${this.url}/buscar/${termino}`)
 }
+subirfoto(archivo:File, id:any):Observable<Noticia>{
+  let formdata = new FormData()
+      formdata.append("archivo",archivo);
+      formdata.append("id",id);
+
+      return this.http.post(`${this.url}/noticia/upload`,formdata,).pipe(
+        map((respuesta:any)=>respuesta.noticia as Noticia),
+        catchError(e=>{
+
+          Swal.fire(e.error.mensaje,e.error.error,'error');
+          return throwError(e);
+        })
+      )
+    }
 
 }

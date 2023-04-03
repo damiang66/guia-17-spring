@@ -1,3 +1,14 @@
+<div class="container">
+<main role="main" class="inner cover">
+  <h1 class="cover-heading">Noticias Egg</h1>
+  <p class="lead">Este es el portal de noticias de Egg </p>
+  <p class="lead">
+    <a  class="btn btn-lg btn-secondary" (click)="registrar()">Registrate</a>
+  </p>
+</main>
+</div>
+
+<div class="color">
 <div class="container ">
 <div class="row ">
     <div class="card text-white bg-primary m-2" style="max-width: 18rem;" *ngFor="let n of noticias">
@@ -8,5 +19,6 @@
           <button [routerLink]="['/verNoticia/',n.id]" class="btn btn-success btn-sm ">ver</button>
         </div>
       </div>
+</div>
 </div>
 </div>

@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { VerUnaNoticiaComponent } from './componente/ver-una-noticia/ver-una-noticia.component';
 import { ListarComponent } from './compontente/listar/listar.component';
 import { NoticiaFormComponent } from './componente/noticia-form/noticia-form.component';
+import { FotoComponent } from './componente/foto/foto.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,7 +18,8 @@ import { NoticiaFormComponent } from './componente/noticia-form/noticia-form.com
     VistainicioComponent,
     VerUnaNoticiaComponent,
     ListarComponent,
-    NoticiaFormComponent
+    NoticiaFormComponent,
+    FotoComponent
   ],
   imports: [
     BrowserModule,
