@@ -18,6 +18,7 @@ public class Noticia {
     private String titulo;
     @NotBlank
     private String cuerpo;
+    private String foto;
     @Temporal(TemporalType.DATE)
     private Date fecha;
     @PrePersist
