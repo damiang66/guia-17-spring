@@ -65,6 +65,10 @@ constructor(public service:NoticiaService,private modal:ModalService){}
 
 this.service.buscarPorTitulo(termino).subscribe(data=>{
   this.noticias=data;
+},e=>{
+  if (e.status==400){
+    this.todos();
+  }
 })
   }
 
