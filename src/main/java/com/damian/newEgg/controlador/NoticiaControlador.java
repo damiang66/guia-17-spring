@@ -73,6 +73,10 @@ public class NoticiaControlador {
         return new ResponseEntity<>("Noticia no encontrada",HttpStatus.NOT_FOUND);
 
     }
+    @GetMapping("/buscar/{termino}")
+    public ResponseEntity<?>buscarPorTitulo(@PathVariable String termino){
+        return ResponseEntity.ok().body(service.buscarPorTitulo(termino));
+    }
 
 
 }

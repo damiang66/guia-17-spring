@@ -10,4 +10,5 @@ public interface NoticiaService {
     public Optional<Noticia>ver(Long id);
     public Noticia save(Noticia noticia);
     public void delete (Long id);
+    public List<Noticia>buscarPorTitulo(String termino);
 }

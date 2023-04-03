@@ -30,4 +30,9 @@ public class NoticiaServiceImp implements  NoticiaService{
     public void delete(Long id) {
     repositorio.deleteById(id);
     }
+
+    @Override
+    public List<Noticia> buscarPorTitulo(String termino) {
+        return repositorio.findByTituloContainingIgnoreCase(termino);
+    }
 }
