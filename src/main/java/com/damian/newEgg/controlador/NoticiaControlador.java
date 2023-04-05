@@ -8,6 +8,7 @@ import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -49,6 +50,7 @@ public class NoticiaControlador {
         }
         return ResponseEntity.notFound().build();
     }
+    @Secured({"ROLE_ADMIN"})
     @PostMapping
     public ResponseEntity<?>guardar(@Valid @RequestBody Noticia noticia, BindingResult result){
         if (result.hasErrors()){
@@ -57,6 +59,7 @@ public class NoticiaControlador {
         }
         return ResponseEntity.status(HttpStatus.CREATED).body(service.save(noticia));
     }
+    @Secured({"ROLE_ADMIN"})
     @PutMapping("/{id}")
     public ResponseEntity<?>editar(@Valid @RequestBody Noticia noticia,BindingResult result, @PathVariable Long id){
         if (result.hasErrors()){
@@ -71,6 +74,7 @@ public class NoticiaControlador {
         }
         return ResponseEntity.notFound().build();
     }
+    @Secured({"ROLE_ADMIN"})
     @DeleteMapping("/{id}")
     public ResponseEntity<?> eliminar(@PathVariable Long id){
         Optional<Noticia> r = service.ver(id);
@@ -90,6 +94,7 @@ public class NoticiaControlador {
      * @param termino
      * @return
      */
+
     @GetMapping("/buscar/{termino}")
     public ResponseEntity<?>buscarPorTitulo(@PathVariable String termino){
         return ResponseEntity.ok().body(service.buscarPorTitulo(termino));
@@ -101,6 +106,7 @@ public class NoticiaControlador {
      * @param id
      * @return
      */
+    @Secured({"ROLE_ADMIN"})
     @PostMapping("noticia/upload")
     public ResponseEntity<?> upload(@RequestParam("archivo") MultipartFile archivo , @RequestParam("id") Long id){
         Map<String,Object> respuesta = new HashMap<>();
