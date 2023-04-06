@@ -11,5 +11,8 @@ public interface UsuarioService {
     public Usuario save (Usuario usuario);
     public Usuario findBYUsername(String username);
     public void delete (Long id);
+    public Boolean exiteUsername(String username);
+    public Boolean existeEmail(String email);
+
 
 }

@@ -9,6 +9,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -42,6 +43,16 @@ public class UsuarioControlador {
     public ResponseEntity<?>save (@Valid @RequestBody Usuario usuario, BindingResult result){
         if (result.hasErrors()){
             return this.validar(result);
+        }
+        if (!usuario.getEmail().isEmpty() && service.existeEmail(usuario.getEmail())) {
+            return ResponseEntity.badRequest()
+                    .body(Collections
+                            .singletonMap("mensaje", "Ya existe! un usuario con ese email electrónico!"));
+        }
+        if (!usuario.getUsername().isEmpty() && service.exiteUsername(usuario.getUsername())) {
+            return ResponseEntity.badRequest()
+                    .body(Collections
+                            .singletonMap("mensaje", "Ya existe! un usuario con ese username!"));
         }
         return ResponseEntity.status(HttpStatus.CREATED).body(service.save(usuario));
     }
