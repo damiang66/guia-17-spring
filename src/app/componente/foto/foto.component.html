@@ -1,4 +1,4 @@
-<div class="abrir-modal animation fadein" *ngIf="modal.modal">
+<div class="abrir-modal animation fadein" *ngIf="modal.modal" >
   <div *ngIf="modal.modal" class="modal" tabindex="-1" style="display:block">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -11,7 +11,7 @@
           <div class="container">
             <div class="row">
               <div class="col-sm">
-                <ul class="list-group text-dark">
+                <ul class="list-group text-dark" >
                   <li class="list-group-item">{{noticia.titulo}}</li>
                   <li class="list-group-item">{{noticia.cuerpo}}</li>
                   <li class="list-group-item">{{noticia.fecha | date:"fullDate"}}</li>
@@ -25,7 +25,7 @@
                     [disabled]="!fotoSeleccionada" (click)="subirFoto()">subir</button>
                 </div>
               </div>
-              <div class="col-sm">
+              <div class="col-sm" >
                 <img *ngIf="noticia.foto" src="http://localhost:8080/noticia/upload/img/{{noticia.foto}}"
                   class="img-thumbnail rounded">
 

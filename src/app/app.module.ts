@@ -11,6 +11,8 @@ import { VerUnaNoticiaComponent } from './componente/ver-una-noticia/ver-una-not
 import { ListarComponent } from './compontente/listar/listar.component';
 import { NoticiaFormComponent } from './componente/noticia-form/noticia-form.component';
 import { FotoComponent } from './componente/foto/foto.component';
+import { RegistroComponent } from './componente/seguridad/registro.component';
+import { LogginComponent } from './componente/seguridad/loggin.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,7 +21,9 @@ import { FotoComponent } from './componente/foto/foto.component';
     VerUnaNoticiaComponent,
     ListarComponent,
     NoticiaFormComponent,
-    FotoComponent
+    FotoComponent,
+    RegistroComponent,
+    LogginComponent
   ],
   imports: [
     BrowserModule,
