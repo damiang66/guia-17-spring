@@ -3,6 +3,7 @@ import { Noticia } from 'src/app/modelo/noticia';
 import { ModalService } from 'src/app/serice/modal.service';
 import { NoticiaService } from 'src/app/service/noticia.service';
 import Swal from 'sweetalert2';
+import { UsuarioService } from 'src/app/service/usuario.service';
 
 @Component({
   selector: 'app-listar',
@@ -13,7 +14,7 @@ export class ListarComponent implements OnInit {
   termino:string;
 noticias:Noticia[]=[];
 noticiaSeleccionada:Noticia = new Noticia();
-constructor(public service:NoticiaService,private modal:ModalService){}
+constructor(public seguridad:UsuarioService,public service:NoticiaService,private modal:ModalService){}
   ngOnInit(): void {
     this.todos();
     this.noticiaSeleccionada=new Noticia();

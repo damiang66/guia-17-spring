@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Noticia } from 'src/app/modelo/noticia';
 import { NoticiaService } from 'src/app/service/noticia.service';
+import { UsuarioService } from 'src/app/service/usuario.service';
 import Swal from 'sweetalert2';
 
 
@@ -15,7 +16,7 @@ export class NoticiaFormComponent implements OnInit {
   errores=""
   noticia:Noticia=new Noticia();
 error:any=""
-  constructor(private service:NoticiaService, private ruta:ActivatedRoute,private  router:Router){}
+  constructor(public serviceUsuario:UsuarioService, private service:NoticiaService, private ruta:ActivatedRoute,private  router:Router){}
   ngOnInit(): void {
     this.ruta.paramMap.subscribe(data=>{
       let id:number = +data.get('id');

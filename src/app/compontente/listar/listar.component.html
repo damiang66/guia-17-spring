@@ -5,7 +5,7 @@
       <h5 class="card-title">Listado de Noticias</h5>
       <div class="my-2 text-left">
         buscar: <input   [(ngModel)]="termino" class="form-control"  (keyup)="buscar(termino)"><br>
-      <button  class="btn btn-rounded btn-success my-2" routerLink="/noticia/form">crear</button>
+      <button *ngIf="seguridad.rol('ROLE_ADMIN')"   class="btn btn-rounded btn-success my-2" routerLink="/noticia/form">crear</button>
     </div>
     <div  *ngIf="noticias==null" class="alert alert-info">
      No exiten registros en la base de datos
@@ -19,8 +19,8 @@
             <th>cuerpo</th>
             <th>fecha</th>
 
-            <th >editar</th>
-            <th >Eliminar</th>
+            <th  *ngIf="seguridad.rol('ROLE_ADMIN')" >editar</th>
+            <th  *ngIf="seguridad.rol('ROLE_ADMIN')" >Eliminar</th>
           </tr>
         </thead>
         <tbody>
@@ -38,11 +38,11 @@
 
             <td>{{ noticia.fecha | date:'dd-MMMM-yyyy' }}</td>
 
-            <td > <button [routerLink]="['/noticia/form',noticia.id]" class="btn btn-success btn-sm">Editar</button>
+            <td > <button  *ngIf="seguridad.rol('ROLE_ADMIN')" [routerLink]="['/noticia/form',noticia.id]" class="btn btn-success btn-sm">Editar</button>
 
 
             <td>
-              <button  class="btn btn-danger btn-sm " (click)="eliminar(noticia)">Eliminar</button>
+              <button  *ngIf="seguridad.rol('ROLE_ADMIN')" class="btn btn-danger btn-sm " (click)="eliminar(noticia)">Eliminar</button>
             </td>
           </tr>
         </tbody>

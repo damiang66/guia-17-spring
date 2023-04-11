@@ -10,6 +10,7 @@ import Swal from 'sweetalert2';
 })
 export class VistainicioComponent  {
   noticias:Noticia[];
+  error:any;
   constructor(private service:NoticiaService){}
   ngOnInit(): void {
     this.service.listar().subscribe(n=>{
@@ -19,6 +20,12 @@ export class VistainicioComponent  {
       console.log(this.noticias);
 
 
+    }, e=>{
+      if (e.status==0){
+      
+       this.error = 'El sistema no funciona comuniquese con el administrador del sistema o paga el servicio rata '
+
+      }
     })
 
 
@@ -26,6 +33,8 @@ export class VistainicioComponent  {
   }
   registrar(){
     Swal.fire('En reparacion: ', 'Esta seccion esta en reparacion', 'info');
+
+
   }
 
 }
